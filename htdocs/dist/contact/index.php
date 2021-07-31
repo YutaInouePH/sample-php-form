@@ -1,3 +1,28 @@
+<?php
+// Start Session.
+session_start();
+
+$input = [];
+$errors = [];
+if (!empty($_SESSION['contact-form'])) {
+    $input = $_SESSION['contact-form']['input'];
+    unset($_SESSION['contact-form']);
+}
+
+// Generate CSRF token.
+if (empty($_SESSION['token'])) {
+    $_SESSION['token'] = bin2hex(openssl_random_pseudo_bytes(32));
+}
+$token = $_SESSION['token'];
+
+if (isset($_SESSION['flash'])) {
+    $input = $_SESSION['flash']['input'];
+    $errors = $_SESSION['flash']['errors'];
+    unset($_SESSION['flash']);
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -14,19 +39,31 @@
         <div class="container">
             <h1>Input page</h1>
 
-            <form>
+            <form action="./confirm/index.php" method="POST">
+                <input type="hidden" name="_token" value="<?= $token ?>" />
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    <label for="email">Email address</label>
+                    <input name="email" type="email" class="form-control" id="email" placeholder="Enter email">
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    <label for="fullname">Full Name</label>
+                    <input name="name" type="text" class="form-control" id="fullname" placeholder="Enter Full Name">
+                </div>
+                <div class="form-group">
+                    <label for="details">Contact Details</label>
+                    <textarea name="details" class="form-control" id="details" rows="3"></textarea>
                 </div>
                 <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                    <input class="form-check-input" type="radio" name="item-radio" id="radio1" value="Item 1">
+                    <label class="form-check-label" for="radio1">Item 1</label>
+                </div>
+                    <div class="form-check">
+                    <input class="form-check-input" type="radio" name="item-radio" id="radio2" value="Item 2">
+                    <label class="form-check-label" for="radio2">Item 2</label>
+                </div>
+                    <div class="form-check disabled">
+                    <input class="form-check-input" type="radio" name="item-radio" id="radio3" value="Item 3">
+                    <label class="form-check-label" for="radio3">Item 3</label>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
