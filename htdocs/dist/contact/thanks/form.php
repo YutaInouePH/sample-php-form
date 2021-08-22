@@ -3,7 +3,7 @@ require __DIR__.'/../_function.php';
 
 session_start();
 
-$allowedHost = 'localhost'; // Change here according to domain.
+$allowedHost = getAllowedHost();
 $host = parse_url($_SERVER['HTTP_REFERER'], PHP_URL_HOST);
 
 // Redirect back to contact input page if the method is not POST or referer is not from allowed host.

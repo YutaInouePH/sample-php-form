@@ -148,4 +148,17 @@ function fields()
         '_token', 'email', 'name', 'details', 'item-radio',
     ];
 }
+
+/**
+ * Retrieve allowed host.
+ * 
+ * @return string
+ */
+function getAllowedHost()
+{
+    $dotenv = Dotenv::createImmutable(__DIR__.'/');
+    $dotenv->safeLoad();
+
+    return $_ENV['ALLOWED_HOST'];
+}
 ?>
