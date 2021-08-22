@@ -31,7 +31,7 @@ $input = $_SESSION['contact-form']['input'];
         <div class="container">
             <h1>Confirmation page</h1>
 
-            <form action="#" method="POST">
+            <form action="../thanks/form.php" method="POST">
                 <input type="hidden" name="_token" value="<?= $token ?>" />
                 <div class="form-group">
                     <label for="email">Email address</label>
