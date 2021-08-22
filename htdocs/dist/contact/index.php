@@ -43,26 +43,26 @@ if (isset($_SESSION['flash'])) {
                 <input type="hidden" name="_token" value="<?= $token ?>" />
                 <div class="form-group">
                     <label for="email">Email address</label>
-                    <input id="email" class="form-control" name="email" type="email" placeholder="Enter email">
+                    <input id="email" class="form-control" name="email" type="email" placeholder="Enter email" value="<?= isset($input['email']) ? htmlspecialchars($input['email']) : '' ?>">
                 </div>
                 <div class="form-group">
                     <label for="fullname">Full Name</label>
-                    <input id="fullname" class="form-control" name="name" type="text" placeholder="Enter Full Name">
+                    <input id="fullname" class="form-control" name="name" type="text" placeholder="Enter Full Name" value="<?= isset($input['name']) ? htmlspecialchars($input['name']) : '' ?>">
                 </div>
                 <div class="form-group">
                     <label for="details">Contact Details</label>
-                    <textarea id="details" class="form-control" name="details" rows="3"></textarea>
+                    <textarea id="details" class="form-control" name="details" rows="3"><?= isset($input['details']) ? str_replace('<br>', '<br>', htmlspecialchars($input['details'] , ENT_QUOTES) ) : '' ?></textarea>
                 </div>
                 <div class="form-check">
-                    <input id="radio1" class="form-check-input" type="radio" name="item-radio" value="Item 1">
+                    <input id="radio1" class="form-check-input" type="radio" name="item-radio" value="Item 1" <?= isset($input['item-radio']) ? ($input['item-radio'] == "Item 1" ? 'checked' : '') : '' ?>>
                     <label class="form-check-label" for="radio1">Item 1</label>
                 </div>
                 <div class="form-check">
-                    <input id="radio2" class="form-check-input" type="radio" name="item-radio" value="Item 2">
+                    <input id="radio2" class="form-check-input" type="radio" name="item-radio" value="Item 2" <?= isset($input['item-radio']) ? ($input['item-radio'] == "Item 2" ? 'checked' : '') : '' ?>>
                     <label class="form-check-label" for="radio2">Item 2</label>
                 </div>
                 <div class="form-check disabled">
-                    <input id="radio3" class="form-check-input" type="radio" name="item-radio" value="Item 3">
+                    <input id="radio3" class="form-check-input" type="radio" name="item-radio" value="Item 3" <?= isset($input['item-radio']) ? ($input['item-radio'] == "Item 3" ? 'checked' : '') : '' ?>>
                     <label class="form-check-label" for="radio3">Item 3</label>
                 </div>
                 <!-- Submit button should be always <button type="submit"> or <input type="submit"> for the form to react. -->
