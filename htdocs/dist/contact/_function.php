@@ -50,7 +50,6 @@ function sendMail($input)
         $mail->AltBody = $mailData['mail_text_user'];
 
         $mail->send();
-        echo '1st mail send';
 
         //Clear all addresses and attachments for the next iteration
         $mail->clearAddresses();
@@ -67,11 +66,7 @@ function sendMail($input)
         $mail->Body = $mailData['mail_text_admin'];
         $mail->AltBody = $mailData['mail_text_admin'];
 
-        echo '<pre>';var_dump($mailData);echo '</pre>';
-
         $mail->send();
-        echo '2nd mail sent';
-        die();
     } catch (Exception $e) {
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
         die();
