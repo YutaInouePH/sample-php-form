@@ -39,33 +39,34 @@ if (isset($_SESSION['flash'])) {
         <div class="container">
             <h1>Input page</h1>
 
-            <form action="./confirm/index.php" method="POST">
+            <form action="./confirm/form.php" method="POST">
                 <input type="hidden" name="_token" value="<?= $token ?>" />
                 <div class="form-group">
                     <label for="email">Email address</label>
-                    <input name="email" type="email" class="form-control" id="email" placeholder="Enter email">
+                    <input id="email" class="form-control" name="email" type="email" placeholder="Enter email">
                 </div>
                 <div class="form-group">
                     <label for="fullname">Full Name</label>
-                    <input name="name" type="text" class="form-control" id="fullname" placeholder="Enter Full Name">
+                    <input id="fullname" class="form-control" name="name" type="text" placeholder="Enter Full Name">
                 </div>
                 <div class="form-group">
                     <label for="details">Contact Details</label>
-                    <textarea name="details" class="form-control" id="details" rows="3"></textarea>
+                    <textarea id="details" class="form-control" name="details" rows="3"></textarea>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="item-radio" id="radio1" value="Item 1">
+                    <input id="radio1" class="form-check-input" type="radio" name="item-radio" value="Item 1">
                     <label class="form-check-label" for="radio1">Item 1</label>
                 </div>
-                    <div class="form-check">
-                    <input class="form-check-input" type="radio" name="item-radio" id="radio2" value="Item 2">
+                <div class="form-check">
+                    <input id="radio2" class="form-check-input" type="radio" name="item-radio" value="Item 2">
                     <label class="form-check-label" for="radio2">Item 2</label>
                 </div>
-                    <div class="form-check disabled">
-                    <input class="form-check-input" type="radio" name="item-radio" id="radio3" value="Item 3">
+                <div class="form-check disabled">
+                    <input id="radio3" class="form-check-input" type="radio" name="item-radio" value="Item 3">
                     <label class="form-check-label" for="radio3">Item 3</label>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <!-- Submit button should be always <button type="submit"> or <input type="submit"> for the form to react. -->
+                <button class="btn btn-primary" type="submit">Submit</button>
             </form>
         </div>
 
