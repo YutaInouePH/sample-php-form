@@ -123,3 +123,7 @@ function mailDetail($input)
     $mail_text_user = "This is a the mail's body that will display on user side.";
 }
 ```
+
+## Issues
+If you've found any bugs or improvements, please go to https://github.com/YutaInoueCommudePH/sample-php-form/issues and create an issue.
+Tag me as the assignee and I'll work into it on my free time.
