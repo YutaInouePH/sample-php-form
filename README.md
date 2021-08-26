@@ -68,7 +68,7 @@ $ git push --mirror git@bitbucket.com:yourname/yourrepo # replace here with bitb
 
 # Remove project temporarily as it's still connected to my repository.
 $ cd ../
-$ rm -rf hoge.git
+$ rm -rf sample-php-form.git
 
 # Finally clone from your own remote repository.
 $ git clone https://username@bitbucket.org/username/bitbucket-private-repository.git
