@@ -16,3 +16,11 @@ services:
       - ../htdocs/dist:/var/www/html
     networks:
       - backend
+  mailhog:
+    container_name: sample-php-fpm.mailhog
+    image: mailhog/mailhog
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+    networks:
+      - backend
